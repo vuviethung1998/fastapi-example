@@ -1,7 +1,7 @@
 from typing import List, Union
 from fastapi import APIRouter, Query, HTTPException, Request, Form
 import jwt
-from server.dto.login_dto import UserLoginDTO, UserSignupDTO
+from server.schemas.login_dto import UserLoginDTO, UserSignupDTO
 from decouple import config
 
 from server.dms.auth_user import AuthUserService, check_user_by_email, create_access_token
