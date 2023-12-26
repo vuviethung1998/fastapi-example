@@ -15,14 +15,14 @@ SECRET_KEY = config('SECRET_KEY')
 def get_password_hash(password):
     return pwd_context.hash(password)
 
-def create_new_user(db: Session, user: UserModel):
+async def create_new_user(db: Session, user: UserModel):
     hashed_pw  = get_password_hash(user.password)
     try:
         db_user = models.User(email=user.email, password=hashed_pw)
         db.add(db_user)
         db.commit()
         db.refresh(db_user)
-        return db_user 
+        return "Successful"
     except Exception as e:
         print(e)
-        raise e 
+        return None 

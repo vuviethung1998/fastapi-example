@@ -1,6 +1,6 @@
 from fastapi import HTTPException
 
-from server.dto.login_dto import UserLoginDTO, UserSignupDTO
+from server.schemas.login_dto import UserLoginDTO, UserSignupDTO
 
 from server.schemas.user import UserModel
 import jwt
