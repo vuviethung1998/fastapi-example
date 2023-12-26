@@ -12,6 +12,7 @@ auth_service = AuthUserService()
 SECURITY_ALGORITHM = 'HS256'
 SECRET_KEY = config('SECRET_KEY')
 
+
 @router.post('/login/')
 async def login(input_login: UserLoginDTO):
     print(input_login.dict())
@@ -24,7 +25,7 @@ async def register(input_login: UserSignupDTO):
     data_test = await auth_service.register(input_login.dict())
     return data_test
     
-    
+
 @router.get('/get_users/')
 async def get_users():
     data = await auth_service.get_users()

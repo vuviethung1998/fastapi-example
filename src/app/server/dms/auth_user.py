@@ -2,7 +2,7 @@ from fastapi import HTTPException
 
 from server.dto.login_dto import UserLoginDTO, UserSignupDTO
 
-from server.models.user import UserModel
+from server.schemas.user import UserModel
 import jwt
 from passlib.context import CryptContext
 from server.database.maria import MariaDB
@@ -43,6 +43,7 @@ async def verify_token(token: str):
     except:
         raise HTTPException(status_code=401, detail="Wrong password entered")
 
+
 def check_user_by_email(email):
     query = f'''SELECT * FROM user WHERE email='{email}' ;'''
     check_exist = MariaDB().get_all_data_match_condition(query=query)
@@ -58,7 +59,6 @@ def create_access_token(data, expire_minutes):
 
     return token
     
-
 
 class AuthUserService():
     async def user_reset_password(self, email, password):

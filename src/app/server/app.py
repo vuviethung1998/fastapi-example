@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from server.routes.auth_user import router as AuthRouter
+from server.routes.auth_user_sqlalchemy import router as AuthSQLAlchRouter
 from starlette.middleware.sessions import SessionMiddleware
 from decouple import config
 
@@ -18,6 +19,7 @@ app.add_middleware(
 )
 
 app.include_router(AuthRouter, tags=['auth'], prefix="/auth")
+app.include_router(AuthSQLAlchRouter, tags=['auth_sql_alchemy'], prefix="/auth_alchemy")
 
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
